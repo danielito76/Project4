@@ -1,6 +1,5 @@
 import React from 'react'
 import axios from 'axios'
-import { toast } from 'react-toastify'
 import Select from 'react-select'
 import Auth from '../../lib/Auth'
 
@@ -24,20 +23,11 @@ class EditUser extends React.Component {
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleChangeNormal = this.handleChangeNormal.bind(this)
   }
 
   componentDidMount() {
-    axios.get(`/api/profiles/${this.props.match.params.id}`)
+    axios.get('/api/profiles/')
       .then(res => this.setState({ formData: res.data }))
-  }
-
-  booleanTranslate() {
-    if(this.state.formData.confirmed === true) {
-      return 'Yes'
-    } else {
-      return 'No'
-    }
   }
 
 
@@ -50,11 +40,10 @@ class EditUser extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
 
-    axios.put(`/api/profiles/${this.props.match.params.id}`, {...this.state.formData}, {
+    axios.put('/api/profiles/', {...this.state.formData}, {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })
       .then(res => {
-        toast.success('User suceessfully updated')
         Auth.setUser(res.data)
         this.props.history.push('/profiles/')
       })
@@ -70,7 +59,6 @@ class EditUser extends React.Component {
             <div className="column is-4 is-offset-4">
 
               <h3 className="title is-1 is-italic" > Edit </h3>
-              <p className="subtitle has-text-black">You`ve changed!</p>
 
               <div className="box">
 
