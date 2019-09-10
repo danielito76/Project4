@@ -9,10 +9,13 @@ class ShowUser extends React.Component {
     super()
 
     this.state = {
-      user: {}
+      user: null
     }
 
   }
+
+
+
 
   componentDidMount() {
     axios.get('/api/profile/', {
@@ -24,6 +27,7 @@ class ShowUser extends React.Component {
 
   render() {
     console.log(this.state)
+    if (!this.state.user) return <h1>Loading...</h1>
     return(
       <div>
         <section className="hero is-fullheight is-black">
@@ -40,19 +44,32 @@ class ShowUser extends React.Component {
                     <h2>{this.state.user.username}</h2>
 
                     <p>Email: {this.state.user.email}</p>
-                    <p>RentalAgreement: {this.state.user.rental_agreements}</p>
-                    <p>MailBox: {this.state.user.mailbox}</p>
-                    <p>RentalPeriod: {this.state.user.rental_period}</p>
-                    <p>Confirmed: {this.state.user.confirmed}</p>
+                    <p>RentalAgreements: {this.state.user.rental_agreements.map(agreement =>
+                      <ul key={agreement.id}>
+                        <li>Mailbox number: {agreement.mailbox}</li>
+                        <li>Rental period: {agreement.rentalperiod}</li>
+                        <li>Confirmed: {agreement.confirmed ? 'YES' : 'NO'} </li>
+                      </ul>
+                    )}</p>
+
+                    <p>Mail: {this.state.user.mail.map(mail =>
+                      <ul key={mail.id}>
+                        <li>Mail description: {mail.description}</li>
+                        <li>Tracking number: {mail.trackingnumber}</li>
+                        <li>Description: {mail.description}</li>
+                        <li>Collected: {mail.collected ? 'YES' : 'NO'} </li>
+                      </ul>
+                    )}</p>
 
                     <br />
 
                     {<div className="buttons">
                       <Link
                         className="button"
-                        to={`/profiles/${this.state.user._id}/edit`}
+                        to={'/profile/edit/'}
                       >Edit</Link>
                     </div> }
+
                   </div>
                 </div>
               </div>

@@ -17,7 +17,7 @@ import Login from './components/auth/Login'
 
 
 import ShowUser from './components/users/Show'
-import EditUser from './components/users/Edit'
+import EditUser from './components/users/EditUser'
 
 import About from './components/pages/About'
 import Contacts from './components/pages/Contacts'
@@ -37,8 +37,8 @@ class App extends React.Component {
           <Route path="/users" component={Index} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
-          <SecureRoute path="/profile" component={ShowUser} />
           <SecureRoute path="/profile/edit" component={EditUser} />
+          <SecureRoute path="/profile" component={ShowUser} />
           <Route path="/about" component={About} />
           <Route path="/contacts" component={Contacts} />
           <Route exact path="/" component={Home} />

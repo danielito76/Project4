@@ -38,6 +38,7 @@ class Navbar extends React.Component {
     this.props.history.push('/')
   }
 
+
   toggleNavbar() {
     this.setState({ navbarOpen: !this.state.navbarOpen })
   }

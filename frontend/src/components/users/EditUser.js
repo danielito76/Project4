@@ -26,9 +26,18 @@ class EditUser extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/api/profiles/')
+    axios.get('/api/profile/', {
+      headers: { 'Authorization': `Bearer ${Auth.getToken()}` }
+    })
       .then(res => this.setState({ formData: res.data }))
   }
+
+
+
+
+
+
+
 
 
   handleChange(selectedOption, data) {
@@ -40,12 +49,12 @@ class EditUser extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
 
-    axios.put('/api/profiles/', {...this.state.formData}, {
+    axios.put('/api/profile/', {...this.state.formData}, {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })
       .then(res => {
         Auth.setUser(res.data)
-        this.props.history.push('/profiles/')
+        this.props.history.push('/profile/')
       })
       .catch(err => this.setState({ errors: err.response.data.errors }))
   }
@@ -53,8 +62,10 @@ class EditUser extends React.Component {
   render() {
     console.log(this.state.formData.image)
     return (
-      <section className="hero is-light">
-        <div className="hero-body">
+      <div>
+        <section className="hero is-fullheight is-black">
+        </section>
+        <section>
           <div className="container has-text-centered">
             <div className="column is-4 is-offset-4">
 
@@ -138,11 +149,8 @@ class EditUser extends React.Component {
               </div>
             </div>
           </div>
-        </div>
-
-
-
-      </section>
+        </section>
+      </div>
     )
   }
 }

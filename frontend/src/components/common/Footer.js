@@ -17,7 +17,7 @@ const Footer = () => {
         </div>
         <div className="navbar-end">
           <div className="navbar-item">
-            <span>© DANIELITO Corporation</span>
+            <span><a href="http://localhost:4000/admin/" target="blank">© DANIELITO Corporation</a></span>
           </div>
         </div>
       </div>

@@ -5,13 +5,17 @@
     background-image: none;
   }
 
+.navbar-menu{
+  background-color: transparent;
+}
+
   &.is-fixed-top {
     z-index: 35;
   }
 }
 
 a.navbar-item {
-  color: green;
+  color: white;
   font-size: 20px;
   // text-shadow: 0 0 5px white, 0 0 10px white, 0 0 20px black, 0 0 30px black, 0 0 40px black, 0 0 50px black;
   text-align: center;

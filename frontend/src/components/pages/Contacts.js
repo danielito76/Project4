@@ -43,8 +43,10 @@ class Contacts extends React.Component{
 
     return(
 
-      <section className="hero is-fullheight is-black">
-        <div className="hero-body">
+      <div>
+        <section className="hero is-fullheight is-black">
+        </section>
+        <section>
           <div className="container">
             <h1 className="title has-text-centered has-text-danger">Contact Us</h1>
             <h2 className="subtitle has-text-centered has-text-danger">or give Us a feedback</h2>
@@ -73,7 +75,7 @@ class Contacts extends React.Component{
                   <div className="field">
                     <label className="label">Email address</label>
                     <div className="control">
-                      <input className="input" type="email" name="email" placeholder="eg: donaldduck@baldandsexy.com" onChange={this.handleChange}
+                      <input className="input" type="email" name="email" placeholder="eg: donaldduck@ducksworld.com" onChange={this.handleChange}
                         value={this.state.formData.email}
                       />
                     </div>
@@ -81,7 +83,7 @@ class Contacts extends React.Component{
                   <div className="field">
                     <label className="label">Message</label>
                     <div className="control">
-                      <textarea className="textarea" name="message" placeholder="e.g. Hello world" onChange={this.handleChange}
+                      <textarea className="textarea" name="message" placeholder="e.g. Hello ducks" onChange={this.handleChange}
                         value={this.state.formData.message}
                       ></textarea>
                     </div>
@@ -97,8 +99,8 @@ class Contacts extends React.Component{
 
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
 
 

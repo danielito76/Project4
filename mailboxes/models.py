@@ -32,5 +32,6 @@ class Mail(models.Model):
     color = models.CharField(max_length=30)
     description = models.TextField()
     storagearea = models.ForeignKey(StorageArea, related_name='mail', on_delete=models.PROTECT)
+    collected = models.BooleanField(default=False)
     def __str__(self):
         return f'{self.customer} {self.mailbox} {self.receivingtime} {self.trackingnumber} {self.color} {self.description} {self.storagearea}'

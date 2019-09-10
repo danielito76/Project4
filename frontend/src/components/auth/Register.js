@@ -1,6 +1,5 @@
 import React from 'react'
 import axios from 'axios'
-import { toast } from 'react-toastify'
 import { Link } from 'react-router-dom'
 
 class Register extends React.Component {
@@ -25,16 +24,12 @@ class Register extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
 
-    axios.post('/api/register', this.state.formData)
-      .then(res => {
-        toast.success(res.data.message)
-        this.props.history.push({
-          pathname: '/users/show',
-          state: res.data.user
-        })
-      })
+    axios.post('/api/register/', this.state.formData)
+      .then(() => this.props.history.push('/profile'))
       .catch(err => this.setState({ errors: err.response.data.errors }))
   }
+
+
 
   render() {
     return (
@@ -58,7 +53,7 @@ class Register extends React.Component {
                         <input
                           className="input is-rounded"
                           name="username"
-                          placeholder="eg: Philip1992"
+                          placeholder="eg: Henry1491"
                           onChange={this.handleChange}
                         />
                       </div>
@@ -71,7 +66,7 @@ class Register extends React.Component {
                           className="input is-rounded"
                           type="email"
                           name="email"
-                          placeholder="eg: philip1992@email.co.uk"
+                          placeholder="eg: henry1491@email.co.uk"
                           onChange={this.handleChange}
                         />
                       </div>
@@ -96,7 +91,7 @@ class Register extends React.Component {
                         <input
                           className="input is-rounded"
                           type="password"
-                          name="passwordConfirmation"
+                          name="password_confirmation"
                           placeholder="eg: ••••••••"
                           onChange={this.handleChange}
                         />
