@@ -22,6 +22,8 @@ import EditUser from './components/users/EditUser'
 import About from './components/pages/About'
 import Contacts from './components/pages/Contacts'
 
+import NewAgreement from './components/rental_agreements/NewAgreement'
+
 import './style.scss'
 
 class App extends React.Component {
@@ -39,6 +41,7 @@ class App extends React.Component {
           <Route path="/register" component={Register} />
           <SecureRoute path="/profile/edit" component={EditUser} />
           <SecureRoute path="/profile" component={ShowUser} />
+          <SecureRoute path="/new_agreement" component={NewAgreement} />
           <Route path="/about" component={About} />
           <Route path="/contacts" component={Contacts} />
           <Route exact path="/" component={Home} />

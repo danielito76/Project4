@@ -19,7 +19,7 @@ class RentalAgreementSerializer(serializers.ModelSerializer):
     # customer = UserSerializer()
     class Meta:
         model = RentalAgreement
-        fields = ('mailbox', 'startdate', 'rentalperiod', 'confirmed')
+        fields = ('mailbox', 'startdate', 'rentalperiod')
 
 
 

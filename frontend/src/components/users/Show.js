@@ -44,22 +44,22 @@ class ShowUser extends React.Component {
                     <h2>{this.state.user.username}</h2>
 
                     <p>Email: {this.state.user.email}</p>
-                    <p>RentalAgreements: {this.state.user.rental_agreements.map(agreement =>
+                    <div>RentalAgreements: {this.state.user.rental_agreements.map(agreement =>
                       <ul key={agreement.id}>
                         <li>Mailbox number: {agreement.mailbox}</li>
                         <li>Rental period: {agreement.rentalperiod}</li>
                         <li>Confirmed: {agreement.confirmed ? 'YES' : 'NO'} </li>
                       </ul>
-                    )}</p>
+                    )}</div>
 
-                    <p>Mail: {this.state.user.mail.map(mail =>
+                    <div>Mail: {this.state.user.mail.map(mail =>
                       <ul key={mail.id}>
                         <li>Mail description: {mail.description}</li>
                         <li>Tracking number: {mail.trackingnumber}</li>
                         <li>Description: {mail.description}</li>
                         <li>Collected: {mail.collected ? 'YES' : 'NO'} </li>
                       </ul>
-                    )}</p>
+                    )}</div>
 
                     <br />
 
@@ -68,6 +68,12 @@ class ShowUser extends React.Component {
                         className="button"
                         to={'/profile/edit/'}
                       >Edit</Link>
+                    </div> }
+                    {<div className="buttons">
+                      <Link
+                        className="button"
+                        to={'/new_agreement/'}
+                      >Make a new agreement</Link>
                     </div> }
 
                   </div>

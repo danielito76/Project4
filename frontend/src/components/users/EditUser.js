@@ -21,8 +21,9 @@ class EditUser extends React.Component {
       errors: {}
     }
 
-    this.handleChange = this.handleChange.bind(this)
+
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
   componentDidMount() {
@@ -34,14 +35,8 @@ class EditUser extends React.Component {
 
 
 
-
-
-
-
-
-
-  handleChange(selectedOption, data) {
-    const formData = { ...this.state.formData, [data.name]: selectedOption.value }
+  handleChange(e) {
+    const formData = { ...this.state.formData, [e.target.name]: e.target.value }
     this.setState({ formData })
   }
 
@@ -56,11 +51,11 @@ class EditUser extends React.Component {
         Auth.setUser(res.data)
         this.props.history.push('/profile/')
       })
-      .catch(err => this.setState({ errors: err.response.data.errors }))
+      .catch(err => this.setState({ errors: err.response.data }))
   }
 
   render() {
-    console.log(this.state.formData.image)
+
     return (
       <div>
         <section className="hero is-fullheight is-black">
@@ -82,9 +77,8 @@ class EditUser extends React.Component {
                       <input
                         className="input is-rounded"
                         name="username"
-                        placeholder="eg: Philip1992"
                         value={this.state.formData.username || ''}
-                        onChange={this.handleChangeNormal}
+                        onChange={this.handleChange}
                       />
                     </div>
                     {this.state.errors.username && <small className="help is-danger">{this.state.errors.username}</small>}
@@ -96,30 +90,21 @@ class EditUser extends React.Component {
                         className="input is-rounded"
                         type="email"
                         name="email"
-                        placeholder="eg: philip1992@email.co.uk"
                         value={this.state.formData.email || ''}
-                        onChange={this.handleChangeNormal}
+                        onChange={this.handleChange}
                       />
                     </div>
                     {this.state.errors.email && <small className="help is-danger">{this.state.errors.email}</small>}
-                  </div>
-                  <div className="field">
-                    <label className="label">Rental period</label>
-                    <Select
-                      name="age"
-                      options={rentalPeriodOptions}
-                      value={rentalPeriodOptions.find(option => option.value === this.state.formData.age)}
-                      onChange={this.handleChange}
-                    />
                   </div>
                   <div className="field">
                     <label className="label">Please confirm your password</label>
                     <div className="control">
                       <input
                         className="input is-rounded"
+                        type="password"
                         name="password"
                         placeholder="eg: ******"
-                        onChange={this.handleChangeNormal}
+                        onChange={this.handleChange}
                       />
                     </div>
                     {this.state.errors.password && <small className="help is-danger">{this.state.errors.password}</small>}
@@ -131,7 +116,7 @@ class EditUser extends React.Component {
                           type="password"
                           name="passwordConfirmation"
                           placeholder="eg: ••••••••"
-                          onChange={this.handleChangeNormal}
+                          onChange={this.handleChange}
                         />
                       </div>
                     </div>
