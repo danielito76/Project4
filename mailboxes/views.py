@@ -1,7 +1,8 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
+from jwt_auth.serializers import UserSerializer
 
 # Create your views here.
 
@@ -150,9 +151,8 @@ class UserProfileView(APIView):
         return Response(serializer.data)
 
 
-    def put(self, request, pk):
-        user = User.objects.get(pk=pk)
-        serializer = PopulatedUserSerializer(user, data=request.data)
+    def put(self, request):
+        serializer = UserSerializer(request.user, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)

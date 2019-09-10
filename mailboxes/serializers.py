@@ -19,7 +19,8 @@ class RentalAgreementSerializer(serializers.ModelSerializer):
     # customer = UserSerializer()
     class Meta:
         model = RentalAgreement
-        fields = ('mailbox', 'startdate', 'rentalperiod')
+        fields = ('mailbox', 'startdate', 'rentalperiod', 'confirmed')
+        read_only_fields = ('confirmed',)
 
 
 
@@ -27,7 +28,7 @@ class MailSerializer(serializers.ModelSerializer):
     # customer = UserSerializer()
     class Meta:
         model = Mail
-        fields = ('mailbox', 'receivingtime', 'trackingnumber', 'color', 'description')
+        fields = ('mailbox', 'receivingtime', 'trackingnumber', 'color', 'description', 'collected')
 
 
 class PopulatedUserSerializer(UserSerializer):

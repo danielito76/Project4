@@ -15,8 +15,6 @@ class ShowUser extends React.Component {
   }
 
 
-
-
   componentDidMount() {
     axios.get('/api/profile/', {
       headers: { 'Authorization': `Bearer ${Auth.getToken()}` }
@@ -56,7 +54,7 @@ class ShowUser extends React.Component {
                       <ul key={mail.id}>
                         <li>Mail description: {mail.description}</li>
                         <li>Tracking number: {mail.trackingnumber}</li>
-                        <li>Description: {mail.description}</li>
+                        <li>Color: {mail.color}</li>
                         <li>Collected: {mail.collected ? 'YES' : 'NO'} </li>
                       </ul>
                     )}</div>

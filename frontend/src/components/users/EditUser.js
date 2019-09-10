@@ -1,15 +1,8 @@
 import React from 'react'
 import axios from 'axios'
-import Select from 'react-select'
 import Auth from '../../lib/Auth'
 
-const rentalPeriodOptions = [
-  { value: 1, label: '3 months' },
-  { value: 2, label: '6 months' },
-  { value: 3, label: 'one year' },
-  { value: 4, label: 'two years' },
-  { value: 5, label: 'for ever and ever' }
-]
+
 
 
 class EditUser extends React.Component {
@@ -28,7 +21,7 @@ class EditUser extends React.Component {
 
   componentDidMount() {
     axios.get('/api/profile/', {
-      headers: { 'Authorization': `Bearer ${Auth.getToken()}` }
+      headers: { Authorization: `Bearer ${Auth.getToken()}`}
     })
       .then(res => this.setState({ formData: res.data }))
   }
@@ -47,9 +40,8 @@ class EditUser extends React.Component {
     axios.put('/api/profile/', {...this.state.formData}, {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })
-      .then(res => {
-        Auth.setUser(res.data)
-        this.props.history.push('/profile/')
+      .then(() => {
+        this.props.history.push('/profile')
       })
       .catch(err => this.setState({ errors: err.response.data }))
   }
@@ -114,7 +106,7 @@ class EditUser extends React.Component {
                         <input
                           className="input is-rounded"
                           type="password"
-                          name="passwordConfirmation"
+                          name="password_confirmation"
                           placeholder="eg: ••••••••"
                           onChange={this.handleChange}
                         />
