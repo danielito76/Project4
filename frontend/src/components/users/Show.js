@@ -28,56 +28,89 @@ class ShowUser extends React.Component {
     if (!this.state.user) return <h1>Loading...</h1>
     return(
       <div>
-        <section className="hero is-fullheight is-black">
+        <section className="hero_light">
+          <div className="container">
+            <div className="columns">
+              <div className="column is-one-quarter is-centered">
+                <img width="400" src="http://mberezzatomanerba.it/wp-content/uploads/2016/04/MBE-Logo-Vertical_Negativo-Convertito.png"/>
+              </div>
+              <div className="column is-one-quarter">
+                <h1 className="title has-text-centered has-text-danger"> Personal <br /> profile</h1>
+              </div>
+              <div className="column is-two-quarter">
+              </div>
+            </div>
+          </div>
         </section>
+
         <section>
-          <div className="container has-text-centered">
-            <div className="column is-4 is-offset-4">
+          <div className="columns is-centered">
 
-              <div className="box is-warning">
 
-                <div className="box">
 
-                  <div className="content">
-                    <h2>{this.state.user.username}</h2>
+            <div className="box">
+              <div className="content">
+                <div className="column">
+                  <h3 className="subtitle">Personal details</h3>
+                  <h3>Username: {this.state.user.username}</h3>
+                  <p>Email: {this.state.user.email}</p>
+                </div>
+                <hr/>
+                {<div className="buttons">
+                  <Link
+                    className="button"
+                    to={'/profile/edit/'}
+                  >Edit</Link>
+                </div> }
+              </div>
+            </div>
 
-                    <p>Email: {this.state.user.email}</p>
-                    <div>RentalAgreements: {this.state.user.rental_agreements.map(agreement =>
-                      <ul key={agreement.id}>
-                        <li>Mailbox number: {agreement.mailbox}</li>
-                        <li>Rental period: {agreement.rentalperiod}</li>
-                        <li>Confirmed: {agreement.confirmed ? 'YES' : 'NO'} </li>
-                      </ul>
-                    )}</div>
 
-                    <div>Mail: {this.state.user.mail.map(mail =>
-                      <ul key={mail.id}>
-                        <li>Mail description: {mail.description}</li>
-                        <li>Tracking number: {mail.trackingnumber}</li>
-                        <li>Color: {mail.color}</li>
-                        <li>Collected: {mail.collected ? 'YES' : 'NO'} </li>
-                      </ul>
-                    )}</div>
 
-                    <br />
-
-                    {<div className="buttons">
-                      <Link
-                        className="button"
-                        to={'/profile/edit/'}
-                      >Edit</Link>
-                    </div> }
-                    {<div className="buttons">
-                      <Link
-                        className="button"
-                        to={'/new_agreement/'}
-                      >Make a new agreement</Link>
-                    </div> }
-
-                  </div>
+            <div className="box">
+              <div className="content">
+                <div className="column">
+                  <h3 className="subtitle">Personal details</h3>
+                  <div>{this.state.user.rental_agreements.map(agreement =>
+                    <ul key={agreement.id}>
+                      <h4>Mailbox number: {agreement.mailbox}</h4>
+                      <li>Start date: {agreement.startdate}</li>
+                      <li>Rental period: {agreement.rentalperiod}</li>
+                      <li>Confirmed: {agreement.confirmed ? 'YES' : 'NO'} </li>
+                    </ul>
+                  )}</div>
+                  <hr/>
+                  {<div className="buttons">
+                    <Link
+                      className="button"
+                      to={'/new_agreement/'}
+                    >Make a new agreement</Link>
+                  </div> }
                 </div>
               </div>
             </div>
+
+
+            <div className="box">
+              <div className="content">
+                <div className="column">
+                  <h3 className="subtitle">Mail received</h3>
+                  <hr/>
+                  <div>{this.state.user.mail.map(mail =>
+                    <ul key={mail.id}>
+                      <h4>Mailbox number: {mail.mailbox}</h4>
+                      <li>Mail description: {mail.description}</li>
+                      <li>Tracking number: {mail.trackingnumber}</li>
+                      <li>Color: {mail.color}</li>
+                      <li>Collected: {mail.collected ? 'YES' : 'NO'} </li>
+                    </ul>
+                  )}</div>
+                </div>
+              </div>
+            </div>
+
+
+
           </div>
         </section>
       </div>

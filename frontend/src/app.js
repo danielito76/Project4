@@ -8,7 +8,6 @@ import SecureRoute from './components/common/SecureRoute'
 
 import Navbar from './components/common/Navbar'
 import Footer from './components/common/Footer'
-import Index from './components/users/Index'
 
 import Home from './components/pages/Home'
 
@@ -36,7 +35,6 @@ class App extends React.Component {
 
         <Switch>
 
-          <Route path="/users" component={Index} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <SecureRoute path="/profile/edit" component={EditUser} />
