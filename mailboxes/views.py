@@ -6,6 +6,10 @@ from jwt_auth.serializers import UserSerializer
 
 # Create your views here.
 
+from django.core.mail import send_mail
+from django.conf import settings
+
+
 from .models import MailBox
 from .models import RentalAgreement
 from .models import Mail
@@ -14,6 +18,23 @@ from .serializers import MailBoxSerializer
 from .serializers import RentalAgreementSerializer
 from .serializers import MailSerializer
 
+
+
+
+
+
+
+  # ======================= Create emails ====================================
+
+class MessageView(APIView):
+
+    def post(self, request):
+        name = request.data.get('name')
+        message = request.data.get('message')
+        email_from = request.data.get('email')
+        recipient_list = [settings.EMAIL_HOST_USER,]
+        send_mail(name, message, email_from, recipient_list)
+        return Response({'message': 'Message sent!'})
 
 
 #================================MAILBOXES===========================================

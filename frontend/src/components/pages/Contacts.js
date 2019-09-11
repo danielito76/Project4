@@ -23,9 +23,8 @@ class Contacts extends React.Component{
 
   handleSubmit(e) {
     e.preventDefault()
-    console.log(this.state.formData)
-    // TODO: make a POST request to /api/send with the formData
-    axios.post('/api/send', this.state.formData)
+
+    axios.post('/api/message/', this.state.formData)
       .then(() => {
         toast.success('Thanks for contacting us, your message has been sent')
         this.setState({ formData: { name: '', email: '', message: '' } })
@@ -34,7 +33,6 @@ class Contacts extends React.Component{
   }
 
   handleChange(e) {
-    // TODO: hook up the handleChange to the input fields as usual
     const formData = { ...this.state.formData, [e.target.name]: e.target.value }
     this.setState({ formData })
   }

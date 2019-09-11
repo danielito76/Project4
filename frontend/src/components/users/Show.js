@@ -22,6 +22,12 @@ class ShowUser extends React.Component {
       .then(res => this.setState({ user: res.data }))
   }
 
+  componentDidUpdate(prevProps) {
+    if(prevProps.profile !== this.props.profile) {
+      this.getProfileData()
+    }
+  }
+
 
   render() {
     console.log(this.state)
