@@ -11,11 +11,21 @@ class About extends React.Component{
   }
 
   render() {
-    
+
     return(
       <container>
-        <section className="hero is-fullheight is-black">
-
+        <section className="hero_light">
+          <div className="container">
+            <div className="columns">
+              <div className="column is-one-third is-centered">
+              </div>
+              <div className="column is-one-third">
+                <img width="400" src="http://mberezzatomanerba.it/wp-content/uploads/2016/04/MBE-Logo-Vertical_Negativo-Convertito.png"/>
+              </div>
+              <div className="column is-one-third">
+              </div>
+            </div>
+          </div>
         </section>
         <section>
           <div className="container">

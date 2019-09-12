@@ -3,20 +3,14 @@ import axios from 'axios'
 import Auth from '../../lib/Auth'
 import Select from 'react-select'
 
-const mailboxOptions = [
-  { value: 1, label: 'Mailbox n.1' },
-  { value: 2, label: 'Mailbox n.2' },
-  { value: 3, label: 'Mailbox n.3' },
-  { value: 4, label: 'Mailbox n.4' },
-  { value: 5, label: 'FMailbox n.5' },
-  { value: 6, label: 'Mailbox n.6' },
-  { value: 7, label: 'Mailbox n.7' },
-  { value: 8, label: 'Mailbox n.8' },
-  { value: 9, label: 'Mailbox n.9' },
-  { value: 10, label: 'Mailbox n.10' }
+const rentalPeriodOptions = [
+  { value: '3 months', label: '3 months' },
+  { value: '6 months', label: '6 months' },
+  { value: 'one year', label: 'one year' },
+  { value: 'for ever', label: 'for ever' }
 ]
 
-class Register extends React.Component {
+class NewAgreement extends React.Component {
 
   constructor() {
     super()
@@ -37,9 +31,11 @@ class Register extends React.Component {
     this.setState({ formData, errors })
   }
 
-  handleChange(selectedOption, data) {
-    const formData = { ...this.state.formData, [data.name]: selectedOption.value }
-    const errors = { ...this.state.errors, [data.name]: '' }
+  handleChange(selectedOption, name) {
+    console.log(selectedOption)
+    console.log(this.state.formData)
+    const formData = { ...this.state.formData, [name]: selectedOption.value }
+    const errors = { ...this.state.errors, [name]: '' }
     this.setState({ formData, errors })
   }
 
@@ -53,13 +49,27 @@ class Register extends React.Component {
       .catch(err => this.setState({ errors: err.response.data }))
   }
 
-
+  componentDidMount() {
+    axios.get('/api/mailboxes/')
+      .then(res => this.setState({ mailboxes: res.data.map(mb => ({ label: `Mailbox n.${mb.number}`, value: mb.id })) }))
+  }
 
 
   render() {
     return (
       <div>
-        <section className="hero is-fullheight is-black">
+        <section className="hero_light">
+          <div className="container">
+            <div className="columns">
+              <div className="column is-one-third is-centered">
+              </div>
+              <div className="column is-one-third">
+                <img width="400" src="http://mberezzatomanerba.it/wp-content/uploads/2016/04/MBE-Logo-Vertical_Negativo-Convertito.png"/>
+              </div>
+              <div className="column is-one-third">
+              </div>
+            </div>
+          </div>
         </section>
         <section>
           <div className="container has-text-centered">
@@ -75,12 +85,22 @@ class Register extends React.Component {
                   <div className="column">
 
                     <div className="field">
+                      <label className="label">Mailbox number</label>
+                      <Select
+                        name="mailbox"
+                        options={this.state.mailboxes}
+                        onChange={(e) => this.handleChange(e, 'mailbox')}
+                      />
+                      {this.state.errors.mailbox && <small className="help is-danger">{this.state.errors.mailbox}</small>}
+                    </div>
+
+                    <div className="field">
                       <label className="label">Start date</label>
                       <div className="control">
                         <input
                           className="input is-rounded"
                           name="startdate"
-                          placeholder="eg: 2019-09-05T15:23:20+01:00"
+                          placeholder="eg: 2019-09-05"
                           onChange={this.handleChangeNormal}
                         />
                       </div>
@@ -88,24 +108,12 @@ class Register extends React.Component {
                     </div>
                     <div className="field">
                       <label className="label">Rental period</label>
-                      <div className="control">
-                        <input
-                          className="input is-rounded"
-                          name="rentalperiod"
-                          placeholder="eg: 00:00:24"
-                          onChange={this.handleChangeNormal}
-                        />
-                      </div>
-                      {this.state.errors.rentalperiod && <small className="help is-danger">{this.state.errors.rentalperiod}</small>}
-                    </div>
-                    <div className="field">
-                      <label className="label">Mailbox number</label>
                       <Select
-                        name="mailbox"
-                        options={mailboxOptions}
-                        onChange={this.handleChange}
+                        name="rentalperiod"
+                        options={rentalPeriodOptions}
+                        onChange={(e) => this.handleChange(e, 'rentalperiod')}
                       />
-                      {this.state.errors.mailbox && <small className="help is-danger">{this.state.errors.mailbox}</small>}
+                      {this.state.errors.rentalperiod && <small className="help is-danger">{this.state.errors.rentalperiod}</small>}
                     </div>
 
 
@@ -126,15 +134,21 @@ class Register extends React.Component {
                   </div>
 
                 </form>
+                <section>
+                  <h3 className="subtitle has-text-centered">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  </h3>
+                </section>
               </div>
 
 
             </div>
           </div>
         </section>
+
       </div>
     )
   }
 }
 
-export default Register
+export default NewAgreement

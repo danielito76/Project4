@@ -36,6 +36,8 @@ class Modal extends React.Component {
             <div id="modal-body" className="modal-card-body">
               <div id="description">
 
+                <h1 className="title has-text-centered has-text-danger"><img src="https://www.seekpng.com/png/detail/171-1714311_mail-boxes-etc-logo-png-transparent-mbe-logo.png" alt="logo"/></h1>
+
                 <p>This document can be used as the <strong>terms and conditions of use for a website</strong>. It <br/> sets out the basis on which a user is granted <strong>access to a website</strong> and can be modified to take account of numerous factors including:</p>
                 <ul>
                   <li>whether the website conducts sales</li>

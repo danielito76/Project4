@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_admin_row_actions',
     'rest_framework',
     'jwt_auth',
     'mailboxes',
