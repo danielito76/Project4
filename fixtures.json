@@ -1,0 +1,150 @@
+[
+{
+  "model": "mailboxes.storagearea",
+  "pk": 1,
+  "fields": {
+    "name": "Area1"
+  }
+},
+{
+  "model": "mailboxes.storagearea",
+  "pk": 2,
+  "fields": {
+    "name": "Area2"
+  }
+},
+{
+  "model": "mailboxes.storagearea",
+  "pk": 3,
+  "fields": {
+    "name": "Area51"
+  }
+},
+{
+  "model": "mailboxes.mailbox",
+  "pk": 12,
+  "fields": {
+    "number": 1,
+    "customer": null
+  }
+},
+{
+  "model": "mailboxes.mailbox",
+  "pk": 14,
+  "fields": {
+    "number": 2,
+    "customer": null
+  }
+},
+{
+  "model": "mailboxes.mailbox",
+  "pk": 15,
+  "fields": {
+    "number": 3,
+    "customer": null
+  }
+},
+{
+  "model": "mailboxes.mailbox",
+  "pk": 16,
+  "fields": {
+    "number": 4,
+    "customer": null
+  }
+},
+{
+  "model": "mailboxes.mailbox",
+  "pk": 17,
+  "fields": {
+    "number": 5,
+    "customer": null
+  }
+},
+{
+  "model": "mailboxes.mailbox",
+  "pk": 18,
+  "fields": {
+    "number": 6,
+    "customer": null
+  }
+},
+{
+  "model": "mailboxes.mailbox",
+  "pk": 19,
+  "fields": {
+    "number": 7,
+    "customer": null
+  }
+},
+{
+  "model": "mailboxes.mailbox",
+  "pk": 22,
+  "fields": {
+    "number": 8,
+    "customer": null
+  }
+},
+{
+  "model": "mailboxes.mailbox",
+  "pk": 23,
+  "fields": {
+    "number": 9,
+    "customer": null
+  }
+},
+{
+  "model": "mailboxes.mailbox",
+  "pk": 24,
+  "fields": {
+    "number": 10,
+    "customer": null
+  }
+},
+{
+  "model": "mailboxes.rentalagreement",
+  "pk": 3,
+  "fields": {
+    "customer": 8,
+    "mailbox": 22,
+    "startdate": "2019-09-12",
+    "rentalperiod": "6",
+    "confirmed": false
+  }
+},
+{
+  "model": "mailboxes.rentalagreement",
+  "pk": 4,
+  "fields": {
+    "customer": 3,
+    "mailbox": 12,
+    "startdate": "2019-09-05",
+    "rentalperiod": "3 months",
+    "confirmed": false
+  }
+},
+{
+  "model": "mailboxes.rentalagreement",
+  "pk": 5,
+  "fields": {
+    "customer": 3,
+    "mailbox": 18,
+    "startdate": "2019-09-05",
+    "rentalperiod": "6 months",
+    "confirmed": false
+  }
+},
+{
+  "model": "mailboxes.mail",
+  "pk": 1,
+  "fields": {
+    "customer": 8,
+    "mailbox": 22,
+    "receivingtime": "2019-09-12T10:49:52Z",
+    "trackingnumber": "PQ999999999",
+    "color": "White",
+    "description": "white envelope",
+    "storagearea": 1,
+    "collected": false
+  }
+}
+]

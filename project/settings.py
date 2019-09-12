@@ -1,3 +1,5 @@
+import django_heroku
+
 """
 Django settings for project project.
 
@@ -145,3 +147,5 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'daframiso.project3@gmail.com'
 EMAIL_HOST_PASSWORD = 'daframiso2019'
+
+django_heroku.settings(locals())
