@@ -19,46 +19,6 @@ from .serializers import RentalAgreementSerializer
 from .serializers import MailSerializer
 
 
-# ======================= Change ModelAdmin ====================================
-# from django_admin_row_actions import AdminRowActionsMixin
-
-
-
-
-
-# class ExampleAdmin(AdminRowActionsMixin, admin.ModelAdmin):
-#     def get_row_actions(self, obj):
-#     row_actions = [
-#         {
-#             'label': 'Edit',
-#             'url': obj.get_edit_url(),
-#             'enabled': obj.status is not 'cancelled',
-#         }, {
-#             'label': 'Download PDF',
-#             'url': obj.get_pdf_url(),
-#         }, {
-#             'label': 'Convert',
-#             'url': reverse('convert_stuff', args=[obj.id]),
-#             'tooltip': 'Convert stuff',
-#         }, {
-#             'divided': True,
-#             'label': 'Cancel',
-#             'action': 'mark_cancelled',
-#         },
-#     ]
-#     row_actions += super(ExampleAdmin, self).get_row_actions(obj)
-#     return row_actions
-
-
-
-
-
-
-
-
-
-
-  # ======================= Create emails ====================================
 
 class MessageView(APIView):
 
