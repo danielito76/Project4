@@ -237,7 +237,7 @@ MBE Mail Recorder
 ![Contact](/frontend/src/img/readme-screenshots/MBE_Mail_Rec_Contact.png)
 ![New agreement](/frontend/src/img/readme-screenshots/MBE_Mail_Rec_NewAgr.png)
 ![Edit profile](/frontend/src/img/readme-screenshots/MBE_Mail_Rec_Edit.png)
-![Customer profile](/frontend/src/img/readme-screenshots/MBE_Mail_Rec_Cust_prof.png)
+![Customer profile](/frontend/src/img/readme-screenshots/MBE_Mail_Rec_Cust_Prof.png)
 
 
 
