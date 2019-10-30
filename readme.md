@@ -11,7 +11,7 @@ MBE Mail Recorder is an idea that comes from my previous work experience at Mail
 It is a Browser-based office application: from the frontend the customer can register and rent mailboxes to receive mail at the shop address, from the backend the shop owner can keep track of every customer’s mail at all times. The customers personal profile section can be used to  update their personal details, access their rental details and check for possible mail received, collected or not.
 
 [Deployed project]  (https://project4-mailboxes.herokuapp.com/#/profile)
-[GitHub Repo] (https://github.com/danielito76/Project4)
+
 
 
 ![First GIF](/frontend/src/img/readme-screenshots/mail_recorder.gif)
@@ -52,16 +52,14 @@ Finally I Styled the frontend part of the application using SCSS.
 
 
 
-```javascript
-
-```
-
-
 
 
 ## Functionality
 
-Models
+Models (Python)
+
+
+```python
 
 from django.db import models
 from django.contrib.auth.models import User
@@ -100,10 +98,10 @@ class Mail(models.Model):
     collected = models.BooleanField(default=False)
     def __str__(self):
         return f'{self.customer} (mailbox number {self.mailbox}) - description:{self.description}'
+```
 
 
-
--New agreement
+-New agreement (JavaScript)
 
 
 ```javascript
@@ -163,7 +161,9 @@ constructor() {
 
 -Contact form which send the message to the owner email address
 
-Python Model
+Python Model (Python)
+
+```python
 
 class Mail(models.Model):
     customer = models.ForeignKey(User, related_name='mail', on_delete=models.PROTECT)
@@ -188,7 +188,9 @@ class MessageView(APIView):
         recipient_list = [settings.EMAIL_HOST_USER,]
         send_mail(name, message, email_from, recipient_list)
         return Response({'message': 'Message sent!'})
+```
 
+Contact form frontend (JavaScript)
 
 ```javascript
 constructor() {
